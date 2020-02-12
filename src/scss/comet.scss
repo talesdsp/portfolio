@@ -1,0 +1,317 @@
+.bg {
+  position: absolute;
+  width   : 100%;
+  height  : 100%;
+  overflow: hidden;
+}
+
+.planet {
+  width           : 20vh;
+  height          : 20vh;
+  top             : -20vw;
+  position        : fixed;
+  background-image: var(--gradient-text);
+  opacity         : .1;
+  border-radius   : 50%;
+  filter          : blur(1px);
+  animation       : planet 200s linear infinite;
+
+  &.horizontal {
+    position : fixed;
+    top      : 100vw;
+    width    : 10vw;
+    height   : 10vw;
+    opacity  : .1;
+    filter   : blur(1px);
+    animation: horizontal 400s linear infinite;
+  }
+}
+
+.solo {
+  animation: planet 200s linear infinite;
+
+}
+
+
+.moon {
+  width           : 10vh;
+  height          : 10vh;
+  position        : fixed;
+  top             : 5rem;
+  right           : 3rem;
+  border-radius   : 50%;
+  border          : none;
+  background-image: var(--gradient-text);
+  opacity         : .2;
+
+  &:before {
+    content         : "";
+    width           : 10vh;
+    height          : 10vh;
+    border-radius   : 50%;
+    background-color: #221e3f;
+    position        : absolute;
+    top             : 37%;
+    animation       : moon 100s linear;
+    left            : 100%;
+  }
+}
+
+@keyframes moon {
+  0% {
+    transform: rotate(20deg) translate(-400px, 0);
+  }
+
+  100% {
+    transform: rotate(20deg) translate(0, 0);
+
+  }
+}
+
+@media(min-width: 768px) {
+  .planet {
+    width : 20vw;
+    height: 20vw;
+  }
+
+  .moon {
+    top   : 3rem;
+    right : 7rem;
+    width : 12vw;
+    height: 12vw;
+
+    &::before {
+      width : 12vw;
+      height: 12vw;
+    }
+  }
+}
+
+
+
+
+
+$speed      : 2s;
+$tail-count : 4;
+
+@function randNum($min, $max) {
+  $randNum: $min + floor(random()* (($max - $min) + 1));
+  @return $randNum;
+}
+
+
+.comet {
+  display        : inline-flex;
+  flex-direction : column;
+  position       : fixed;
+  top            : -10rem;
+  left           : -20rem;
+  height         : 10rem;
+  width          : 20rem;
+  z-index        : 2;
+  padding-right  : 4rem;
+  justify-content: space-around;
+  align-items    : flex-end;
+  border-radius  : 0 30% 30% 0;
+  opacity        : .8;
+  animation      : cometAnimateMobile 30s 2s linear infinite;
+
+
+  @media(min-width: 768px) {
+    animation: cometAnimateWeb 30s 2s linear infinite;
+  }
+
+  .head {
+    height          : 10rem;
+    width           : 10rem;
+    border          : 10rem;
+    border          : 1rem solid var(--green-dark);
+    border-radius   : 50%;
+    position        : absolute;
+    top             : 0;
+    right           : 0;
+    bottom          : 0;
+    margin          : auto;
+    background-color: var(--green);
+    overflow        : hidden;
+    z-index         : 3;
+
+    &::before {
+      content         : "";
+      position        : absolute;
+      height          : 100%;
+      width           : 100%;
+      right           : 20%;
+      bottom          : 20%;
+      border-radius   : inherit;
+      background-color: rgba(lighten(#fff, 30%), .5);
+    }
+
+
+    span {
+      position     : absolute;
+      left         : 0;
+      right        : 0;
+      bottom       : 0;
+      top          : 0;
+      margin       : auto;
+      border       : .4rem solid var(--green-dark);
+      border-radius: 50%;
+      opacity      : 0;
+      animation    : cometParticles $speed/2 linear infinite;
+
+      &:nth-child(1) {
+        top   : 50%;
+        height: 1rem;
+        width : 1rem;
+      }
+
+      &:nth-child(2) {
+        bottom         : 50%;
+        width          : 1.4rem;
+        height         : 1.4rem;
+        animation-delay: -.5s;
+      }
+    }
+  }
+
+  .tail {
+    position       : relative;
+    height         : 1rem;
+    display        : inline-flex;
+    justify-content: space-between;
+    border-radius  : 10rem;
+    overflow       : hidden;
+
+    span {
+      display         : inline-flex;
+      position        : relative;
+      width           : 100%;
+      height          : 100%;
+      border-radius   : 10rem;
+      background-color: var(--green);
+      animation       : tailAnimation $speed / 3 linear infinite;
+      opacity         : 0;
+    }
+  }
+
+  @for $i from 1 through $tail-count {
+    .tail:nth-of-type(#{$i}) {
+      width: #{(randNum(50, 90)) * 1%};
+
+      span {
+        margin         : 0 #{randNum(4,8) *1%};
+        animation-delay: #{$i * (($speed / 3) / $tail-count)};
+      }
+    }
+  }
+}
+
+
+@keyframes tailAnimation {
+  0% {
+    right  : -100%;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    right           : 100%;
+    opacity         : 0;
+    background-color: var(--cyan);
+  }
+}
+
+
+@keyframes cometParticles {
+  0% {
+    transform: translateX(-400%);
+    opacity  : 1;
+  }
+
+  100% {
+    transform: translateX(400%);
+    opacity  : .7;
+
+  }
+}
+
+
+
+
+
+@keyframes cometAnimateMobile {
+  0% {
+    transform: rotate(45deg) translateX(0rem) translateY(0) scale(.4);
+  }
+
+  15% {
+    transform: rotate(45deg) translateX(100vw) translateY(45px) scale(.7);
+  }
+
+  30% {
+    transform: rotate(45deg) translateX(220vw) translateY(45px) scale(.5);
+  }
+
+  100% {
+    transform: rotate(45deg) translateX(220vw) translateY(45px) scale(.4);
+  }
+}
+
+@keyframes cometAnimateWeb {
+  0% {
+    transform: rotate(20deg) translateX(-100%) translateY(0) scale(.7);
+  }
+
+  15% {
+    transform: rotate(20deg) translateX(60vw) translateY(10px) scale(1.6);
+  }
+
+  30% {
+    transform: rotate(20deg) translateX(140vw) translateY(10px) scale(1.2);
+  }
+
+  100% {
+    transform: rotate(20deg) translateX(140vw) translateY(10px) scale(.7);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes planet {
+  from {
+    transform: translateY(0) rotate(0) translateX(220px);
+  }
+
+  to {
+    transform: translateY(150vh) rotate(360deg) translateX(-400px);
+  }
+}
+
+@keyframes horizontal {
+  0% {
+    transform: translateX(-10vw) rotate(0) translateY(70px);
+  }
+
+  50% {
+    transform: translateX(110vw) rotate(360deg) translateY(35px);
+  }
+
+  100% {
+    transform: translateX(110vw) rotate(360deg) translateY(35px);
+
+  }
+}
