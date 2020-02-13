@@ -51,7 +51,7 @@ gulp.task("watch", function() {
   gulp.watch("src/scss/**/*.scss", gulp.parallel("sass"));
   gulp.watch("src/js/**/*.js", gulp.parallel("js"));
   gulp.watch(["src/*.html", "src/css/*"], gulp.parallel("useref"));
-  gulp.watch(["public/*.html", "public/js/**/*.js"]).on("change", browserSync.reload);
+  gulp.watch(["public/**/*"]).on("change", browserSync.reload);
 });
 
 // Optimization Tasks
@@ -64,26 +64,30 @@ gulp.task("useref", function() {
     .pipe(useref())
     .pipe(gulpIf("*.js", uglify()))
     .pipe(gulpIf("*.css", cssnano()))
-    .pipe(gulp.dest("public"))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(gulp.dest("public"));
 });
 
 // Optimizing Images
 gulp.task("images", function() {
   return (
     gulp
-      .src("src/images/**/*.+(png|jpg|jpeg|gif|svg)")
+      .src("src/images/**/*.+(png|jpg|jpeg|svg)")
       // Caching images that ran through imagemin
       .pipe(
         cache(
-          imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.mozjpeg({quality: 90, progressive: true}),
-            imagemin.optipng({optimizationLevel: 5}),
-            imagemin.svgo({
-              plugins: [{removeViewBox: true}, {cleanupIDs: false}]
-            })
-          ])
+          imagemin(
+            [
+              imagemin.gifsicle({interlaced: true}),
+              imagemin.mozjpeg({quality: 90, progressive: true}),
+              imagemin.optipng({optimizationLevel: 5}),
+              imagemin.svgo({
+                plugins: [{removeViewBox: true}, {cleanupIDs: false}]
+              })
+            ],
+            {
+              verbose: true
+            }
+          )
         )
       )
       .pipe(gulp.dest("public/images"))
@@ -113,6 +117,6 @@ gulp.task(
   gulp.parallel([gulp.series(["sass", "js", "watch"]), gulp.series(["browserSync"])])
 );
 
-gulp.task("build", function(callback) {
-  runSequence("clean:public", "sass", "js", "useref", "images", "copy", callback);
+gulp.task("build", async function(callback) {
+  runSequence("clean:public", "copy", "sass", "js", "useref", "images", callback);
 });
