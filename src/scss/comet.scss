@@ -11,6 +11,7 @@
   top             : -20vw;
   position        : fixed;
   background-image: var(--gradient-text);
+  overflow        : hidden;
   opacity         : .1;
   border-radius   : 50%;
   filter          : blur(1px);
@@ -107,7 +108,7 @@ $tail-count : 4;
   top            : -10rem;
   left           : -20rem;
   height         : 10rem;
-  width          : 20rem;
+  width          : 22rem;
   z-index        : 2;
   padding-right  : 4rem;
   justify-content: space-around;
@@ -267,11 +268,11 @@ $tail-count : 4;
   }
 
   15% {
-    transform: rotate(20deg) translateX(60vw) translateY(10px) scale(1.6);
+    transform: rotate(20deg) translateX(60vw) translateY(10px) scale(1.2);
   }
 
   30% {
-    transform: rotate(20deg) translateX(140vw) translateY(10px) scale(1.2);
+    transform: rotate(20deg) translateX(140vw) translateY(10px) scale(0.9);
   }
 
   100% {
