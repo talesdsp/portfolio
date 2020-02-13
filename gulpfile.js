@@ -77,7 +77,6 @@ gulp.task("images", function() {
         cache(
           imagemin(
             [
-              imagemin.gifsicle({interlaced: true}),
               imagemin.mozjpeg({quality: 90, progressive: true}),
               imagemin.optipng({optimizationLevel: 5}),
               imagemin.svgo({
@@ -99,6 +98,11 @@ gulp.task("copy", function() {
   return gulp.src("src/*.+(xml|json|ico)").pipe(gulp.dest("public"));
 });
 
+// Copying gifs
+gulp.task("gifs", function() {
+  return gulp.src("src/images/gif/*.gif").pipe(gulp.dest("public/images/gif"));
+});
+
 // Cleaning
 gulp.task("clean", function() {
   return del("public").then(function(cb) {
@@ -118,5 +122,5 @@ gulp.task(
 );
 
 gulp.task("build", async function(callback) {
-  runSequence("clean:public", "copy", "sass", "js", "useref", "images", callback);
+  runSequence("clean:public", "copy", "sass", "js", "useref", "images", "gifs", callback);
 });
