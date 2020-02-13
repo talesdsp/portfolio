@@ -2,19 +2,19 @@
   position             : relative;
   padding              : 0;
   display              : grid;
+  gap                  : 40px;
   width                : 100vw;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-columns: repeat(auto-fit, 300px);
   flex-direction       : column;
   justify-content      : center;
   align-items          : center;
+  grid-template-columns: repeat(auto-fit, minmax(0, 300px));
 }
 
 .card {
   position      : relative;
-  margin        : 20px;
-  border-radius : 52px;
-  cursor        : pointer;
+  margin        : 40px 20px;
+  border-radius : 5px;
+  height        : 100%;
   display       : flex;
   flex-direction: column;
 }
@@ -41,10 +41,12 @@
   position        : relative;
   height          : 100%;
   transition      : all 0.5s ease-in-out;
-  flex            : 2;
+  flex            : 3;
 
   img {
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
+    object-fit   : cover;
+    height       : 100%;
     transition   : transform 0.5s ease-out;
   }
 }
@@ -57,14 +59,15 @@
   position        : relative;
   flex            : 1;
   padding         : 20px;
+  font-family     : sans-serif;
   background-color: #fff;
   color           : #333;
   font-size       : 1.6rem;
   line-height     : 1.5;
 
   .name {
-    color      : #3784d2;
-    font-weight: bold;
+    color      : var(--bg-color);
+    font-weight: normal;
     font-size  : 1.8rem;
   }
 }
@@ -81,12 +84,11 @@
 }
 
 .ecommerce {
-
   background-color: #335;
 
   button {
     background-color: #338;
-
+    color           : #fff;
   }
 }
 
@@ -94,47 +96,57 @@
   background-color: #9c1b24;
 
   button {
-    background: #ed4852;
+    background-color: #ed4852;
+    color           : #fff;
   }
 }
 
-.etch {
-  background-color: #801357;
+.responsive {
+  background-color: #ddd;
+  color           : #333;
 
   button {
-    background-color: #f7777b;
+    background-color: #e56399;
+    color           : #fff;
   }
 }
 
 .back-content {
-  color     : #fff;
-  text-align: center;
-  width     : 100%;
+  padding    : 20px;
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size  : 1.6rem;
+  width      : 100%;
+}
 
+.sm {
+  font-size      : 1.8rem;
+  transition     : .4s;
+  margin-top     : 10px;
+  color          : #333;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  flex-wrap      : wrap;
 
-  button {
-    border-radius: 5px;
-    border       : none;
+  a {
+    flex  : 1;
+    margin: 5px;
   }
 
-}
-
-.sm {
-  margin: 20px 0;
-}
-
-.sm {
-  font-size : 1.8rem;
-  transition: .4s;
-  color     : #333;
-
   button {
-    font-family    : "Lemonada", sans-serif;
+    min-width      : 70px;
+    border-radius  : 5px;
+    width          : 100%;
+    border         : none;
+    padding        : 10px 0;
+    font-weight    : normal;
+    font-family    : "Fredoka One", sans-serif;
+    text-transform : uppercase;
+    font-size      : 1.4rem;
     justify-content: center;
     align-items    : center;
-    display        : inline-flex;
-    padding        : 5px 20px;
-    color          : #fff;
+    display        : flex;
     cursor         : pointer;
 
     i {
