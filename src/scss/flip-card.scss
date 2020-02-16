@@ -111,6 +111,19 @@
   }
 }
 
+.node-auth {
+  background-color: #091540;
+
+  button {
+    background-color: dodgerblue;
+    color           : #fff;
+  }
+}
+
+button:disabled {
+  background-color: gray;
+}
+
 .back-content {
   padding    : 20px;
   font-family: sans-serif;
