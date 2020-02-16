@@ -15,6 +15,7 @@
   opacity         : .1;
   border-radius   : 50%;
   filter          : blur(1px);
+  will-change     : transform;
   animation       : planet 200s linear infinite;
 
   &.horizontal {
@@ -115,11 +116,12 @@ $tail-count : 4;
   align-items    : flex-end;
   border-radius  : 0 30% 30% 0;
   opacity        : .8;
-  animation      : cometAnimateMobile 30s 2s linear infinite;
+  will-change    : transform;
+  animation      : cometAnimateMobile 30s 5s linear infinite;
 
 
   @media(min-width: 768px) {
-    animation: cometAnimateWeb 30s 2s linear infinite;
+    animation: cometAnimateWeb 30s 5s linear infinite;
   }
 
   .head {
