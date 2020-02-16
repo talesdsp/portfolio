@@ -54,7 +54,7 @@
 
 <body>
   <!--  START BACKGROUND  -->
-  <div class="bg">
+  <div class="bg" aria-hidden="true">
     <div class="planet"></div>
     <div class="planet horizontal"></div>
     <div class="moon"></div>
@@ -76,16 +76,16 @@
   <nav class="top-nav">
     <ul class="nav-list">
       <li>
-        <a href="#landing" class="nav-link">Home</a>
+        <a href="#landing" class="nav-link" aria-label="Home">Home</a>
       </li>
       <li>
-        <a href="#about" class="nav-link">About</a>
+        <a href="#about" class="nav-link" aria-label="About">About</a>
       </li>
       <li>
-        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#portfolio" class="nav-link" aria-label="Portfolio">Portfolio</a>
       </li>
       <li>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="nav-link" aria-label="Contact">Contact</a>
       </li>
     </ul>
   </nav>
@@ -123,9 +123,10 @@
         <div class="social-media">
           <ul class="nav-list">
             <li>
-              <a rel="noopener noreferrer" href="https://github.com/taleco22" aria-label="Tales github"
-                style="display: flex; align-items: center; font-size: 1.6rem;" class="icon-link" target="_blank">
-                <i class="fab fa-github-square" title="See my Github"></i>
+              <a rel="noopener noreferrer" href="https://github.com/taleco22"
+                style="display: flex; align-items: center; font-size: 1.6rem;" class="icon-link" target="_blank"
+                aria-label="See Tales github account">
+                <i class="fab fa-github-square"></i>
               </a>
             </li>
           </ul>
@@ -141,7 +142,11 @@
     <div class="card ">
       <div class="front">
         <div class="head">
-          <img src="./images/restaurant.png" alt="" />
+          <picture>
+            <source srcset="./images/restaurant.webp" type="image/webp">
+            <source srcset="./images/restaurant.png" type="image/png">
+            <img src="./images/restaurant.png" alt="restaurant landing page" />
+          </picture>
         </div>
         <div class="info">
           <h1 class="name">Restaurant Landing Page</h1>
@@ -175,7 +180,11 @@
     <div class="card ">
       <div class="front">
         <div class="head">
-          <img src="./images/ecommerce.png" alt="" />
+          <picture>
+            <source srcset="./images/ecommerce.webp" type="image/webp">
+            <source srcset="./images/ecommerce.png" type="image/png">
+            <img src="./images/ecommerce.png" alt="ecommerce website" />
+          </picture>
         </div>
         <div class="info">
           <h1 class="name">Ecommerce</h1>
@@ -209,7 +218,11 @@
     <div class="card ">
       <div class="front">
         <div class="head">
-          <img src="./images/responsive.png" alt="" />
+          <picture>
+            <source srcset="./images/responsive.webp" type="image/webp">
+            <source srcset="./images/responsive.png" type="image/png">
+            <img src="./images/responsive.png" alt="responsive web page" />
+          </picture>
         </div>
         <div class="info">
           <h1 class="name">Responsive Web Page</h1>
@@ -243,7 +256,11 @@
     <div class="card ">
       <div class="front">
         <div class="head">
-          <img src="./images/node-auth.png" alt="" />
+          <picture>
+            <source srcset="./images/node-auth.webp" type="image/webp">
+            <source srcset="./images/node-auth.png" type="image/png">
+            <img src="./images/node-auth.png" alt="authentication project" />
+          </picture>
         </div>
         <div class="info">
           <h1 class="name">Node-auth</h1>
@@ -277,7 +294,11 @@
     <div class="card ">
       <div class="front">
         <div class="head">
-          <img src="./images/live-chat.png" alt="" />
+          <picture>
+            <source srcset="./images/live-chat.webp" type="image/webp">
+            <source srcset="./images/live-chat.png" type="image/png">
+            <img src="./images/live-chat.png" alt="live chat app" />
+          </picture>
         </div>
         <div class="info">
           <h1 class="name">Live chat</h1>
