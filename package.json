@@ -26,7 +26,11 @@
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "gulp-useref": "^4.0.1",
+    "gulp-webp": "^4.0.1",
     "gulp4-run-sequence": "^1.0.1",
     "standard": "^14.3.1"
+  },
+  "dependencies": {
+    "gulp-image-resize": "^0.13.1"
   }
 }
