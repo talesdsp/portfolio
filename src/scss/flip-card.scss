@@ -102,8 +102,8 @@
 }
 
 .responsive {
-  background-color: #ddd;
-  color           : #333;
+  background-color: #f9f9f9;
+  color           : #555;
 
   button {
     background-color: #e56399;
@@ -116,6 +116,16 @@
 
   button {
     background-color: dodgerblue;
+    color           : #fff;
+  }
+}
+
+.live-chat {
+  background-color: #f9f9f9;
+  color           : #555;
+
+  button {
+    background-color: #575ed8;
     color           : #fff;
   }
 }
