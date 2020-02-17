@@ -321,24 +321,6 @@ li {
   }
 }
 
-.social-media {
-  margin-top     : 5rem;
-  display        : flex;
-  align-items    : center;
-  justify-content: center;
-  font-size      : 1.6rem
-}
-
-.fa-github-square {
-  font-size: 5rem;
-  margin   : auto;
-
-  transition: color 650ms;
-}
-
-.fa-github-square:hover {
-  color: var(--green);
-}
 
 
 /* End About */
@@ -513,12 +495,41 @@ svg {
   width           : 100%;
   text-align      : center;
   padding         : 2rem 0;
+  height          : max-content;
   background-color: #16162d;
   position        : relative;
 
   p {
+    margin   : 1rem;
     font-size: 1.4rem;
   }
+}
+
+.lighthouse {
+  text-decoration: underline;
+  font-size      : 2rem;
+  text-align     : center;
+  color          : var(--green);
+  margin         : 1rem;
+  border-radius  : .5rem;
+}
+
+
+.social-media {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  font-size      : 1.6rem
+}
+
+.fa-github-square {
+  font-size : 5rem;
+  margin    : auto;
+  transition: color 650ms;
+}
+
+.fa-github-square:hover {
+  color: var(--green);
 }
 
 .up {
