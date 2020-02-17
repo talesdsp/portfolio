@@ -58,6 +58,20 @@ img {
   width        : 100%;
 }
 
+/* Proven method to visually hide something but */
+/* still make it available to assistive technology */
+.visually-hidden {
+  position: absolute;
+  top     : auto;
+  overflow: hidden;
+  clip    : rect(1px 1px 1px 1px);
+  /* IE 6/7 */
+  clip       : rect(1px, 1px, 1px, 1px);
+  width      : 1px;
+  height     : 1px;
+  white-space: nowrap;
+}
+
 /* End Global */
 
 
@@ -308,11 +322,17 @@ li {
 }
 
 .social-media {
-  margin-top: 5rem;
+  margin-top     : 5rem;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  font-size      : 1.6rem
 }
 
 .fa-github-square {
-  font-size : 5rem;
+  font-size: 5rem;
+  margin   : auto;
+
   transition: color 650ms;
 }
 
