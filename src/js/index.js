@@ -1,17 +1,24 @@
 const topNav = document.querySelector(".top-nav");
 const menuToggler = document.querySelector(".menu-toggler");
 const nav = document.querySelector(".nav-list");
+const header = document.querySelector("header");
 
 menuToggler.addEventListener("click", toggleMenu);
+menuToggler.addEventListener("focus", toggleMenu);
+document.querySelector("header").addEventListener("focus", closeMenu);
+
 function toggleMenu(e) {
   menuToggler.classList.toggle("open");
   topNav.classList.toggle("open");
+  topNav.setAttribute("aria-hidden", !topNav.getAttribute("aria-hidden"));
 }
 
 nav.addEventListener("click", closeMenu);
+
 function closeMenu(e) {
   menuToggler.classList.remove("open");
   topNav.classList.remove("open");
+  topNav.setAttribute("aria-hidden", true);
 }
 
 document.addEventListener("aos:in:custom-fade-in", setOpacity);

@@ -54,12 +54,12 @@
 
 <body>
   <!--  START BACKGROUND  -->
-  <div class="bg" aria-hidden="true">
-    <div class="planet"></div>
-    <div class="planet horizontal"></div>
-    <div class="moon"></div>
+  <div class="bg" tab-index="-1" aria-hidden="true" aria->
+    <div class="planet" tabindex="-1"></div>
+    <div class="planet horizontal" tabindex="-1"></div>
+    <div class="moon" tabindex="-1"></div>
 
-    <div class="comet">
+    <div class="comet" tabindex="-1">
       <div class="head">
         <span></span>
         <span></span>
@@ -73,7 +73,17 @@
   <!--  END BACKGROUND  -->
 
   <!--  START NAV -->
-  <nav class="top-nav">
+
+  <div class="menu-toggler" tabindex="0">
+    <div class="visually-hidden">
+      open navigation
+    </div>
+    <div class="bar half start"></div>
+    <div class="bar "></div>
+    <div class="bar half end"></div>
+  </div>
+
+  <nav class="top-nav" aria-hidden="true">
     <ul class="nav-list">
       <li>
         <a href="#landing" class="nav-link" aria-label="Home">Home</a>
@@ -89,21 +99,17 @@
       </li>
     </ul>
   </nav>
+
   <!--  END NAV -->
 
-  <header>
-    <div class="menu-toggler">
-      <div class="bar half start"></div>
-      <div class="bar "></div>
-      <div class="bar half end"></div>
-    </div>
+  <header tabindex="0">
     <div class="landing-text" id="landing" data-aos="fade-up" data-aos-delay="200">
       <h1>Tales</h1>
       <h2>UI | UX Designer and Webdeveloper</h2>
     </div>
   </header>
   <!--  START ABOUT -->
-  <section class="about" id="about">
+  <section class="about" tabindex="0" id="about">
     <div class="container">
       <!-- <div class="profile-img" data-aos="fade-right" data-aos-delay="300">
           <img src="images/profile.jpeg" alt="of me" />
@@ -121,15 +127,12 @@
           since then. Focusing on what matters to give results.
         </p>
         <div class="social-media">
-          <ul class="nav-list">
-            <li>
-              <a rel="noopener noreferrer" href="https://github.com/taleco22"
-                style="display: flex; align-items: center; font-size: 1.6rem;" class="icon-link" target="_blank"
-                aria-label="See Tales github account">
-                <i class="fab fa-github-square"></i>
-              </a>
-            </li>
-          </ul>
+          <a rel="noopener noreferrer" href="https://github.com/taleco22" class="icon-link" target="_blank">
+            <div class="visually-hidden">
+              Go to Tales github account
+            </div>
+            <i class="fab fa-github-square"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -137,9 +140,11 @@
   <!--  END ABOUT -->
 
   <!--  START PORTFOLIO -->
-  <section id="portfolio" data-aos="fade-up" data-aos-delay="300" class="cards">
+  <section id="portfolio" tabindex="0" data-aos="fade-up" data-aos-delay="300" class="cards">
     <!--  Restaurant  -->
-    <div class="card ">
+    <div class="card" tabindex="0">
+
+
       <div class="front">
         <div class="head">
           <picture>
@@ -149,7 +154,7 @@
           </picture>
         </div>
         <div class="info">
-          <h1 class="name">Restaurant Landing Page</h1>
+          <h1 class="name" aria-hidden="true">Restaurant Landing Page</h1>
           <p>
             Landing Page for a restaurant
           </p>
@@ -174,10 +179,12 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <!--  Ecommerce   -->
-    <div class="card ">
+    <div class="card " tab-index="0">
+
       <div class="front">
         <div class="head">
           <picture>
@@ -214,8 +221,10 @@
       </div>
     </div>
 
+
     <!--  Responsive   -->
-    <div class="card ">
+    <div class="card" tabindex="0">
+
       <div class="front">
         <div class="head">
           <picture>
@@ -252,8 +261,10 @@
       </div>
     </div>
 
+
     <!--  Node-auth  -->
-    <div class="card ">
+    <div class="card" tabindex="0">
+
       <div class="front">
         <div class="head">
           <picture>
@@ -283,15 +294,18 @@
               <button><i class="fas fa-play"></i> GIF</button>
             </a>
             <a rel="noopener noreferrer" target="_blank" href="#">
-              <button style="cursor: not-allowed" disabled><i class="fas fa-globe"></i> live</button>
+              <button style="cursor: not-allowed" disabled aria-disabled="true"><i class="fas fa-globe"></i>
+                live</button>
             </a>
           </div>
         </div>
       </div>
     </div>
 
+
     <!--  Web Sockets  -->
-    <div class="card ">
+    <div class="card" tabindex="0">
+
       <div class="front">
         <div class="head">
           <picture>
@@ -303,14 +317,14 @@
         <div class="info">
           <h1 class="name">Live chat</h1>
           <p>
-            Live chat, with Socket.IO
+            Realtime messenger, with Websockets.
           </p>
         </div>
       </div>
       <div class="back live-chat">
         <div class="back-content ">
           <p>
-            Live chat using Socket.io to sync realtime data among server and clients.
+            Using Socket.io to sync realtime data among server and clients.
           </p>
           <div class="sm">
             <a rel="noopener noreferrer" target="_blank" href="https://github.com/taleco22/live-chat">
@@ -320,12 +334,14 @@
               <button><i class="fas fa-play"></i> GIF</button>
             </a>
             <a rel="noopener noreferrer" target="_blank" href="#">
-              <button style="cursor: not-allowed" disabled><i class="fas fa-globe"></i> live</button>
+              <button style="cursor: not-allowed" disabled aria-disabled="true"><i class="fas fa-globe"></i>
+                live</button>
             </a>
           </div>
         </div>
       </div>
     </div>
+
 
   </section>
   <!--  END PORTFOLIO -->
@@ -386,12 +402,14 @@
           </defs>
         </svg>
 
-        <form rel='' class="form" data-aos="fade-left" data-aos-delay="300">
+        <form class="form" data-aos="fade-left" data-aos-delay="300">
           <label for="subject">Subject:</label><br />
-          <textarea name="subject" id="subject" cols="30" rows="1" placeholder="Title"></textarea>
+          <textarea name="subject" id="subject" cols="30" rows="1" placeholder="Title"
+            aria-placeholder="title"></textarea>
 
           <label for="body">Body:</label><br />
-          <textarea name="body" id="body" cols="30" rows="5" placeholder="Your message..."></textarea>
+          <textarea name="body" id="body" cols="30" rows="5" aria-placeholder="your message"
+            placeholder="Your message..."></textarea>
 
           <button type="submit">Send <i class="fas fa-paper-plane"></i></button>
           *In case you prefer another way -> talesdsp@gmail.com
@@ -403,7 +421,8 @@
   <!--  START FOOTER  -->
   <footer class="copyright">
     <a href="#landing" class="uplink">
-      <div class="up" id="up">
+      <div class="up" id="up" tabindex="0">
+        <div class="visually-hidden">Link. Scroll to top</div>
         <i class="fas fa-chevron-up"></i>
       </div>
     </a>
