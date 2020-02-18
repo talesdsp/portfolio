@@ -8,30 +8,23 @@
 .planet {
   width           : 20vh;
   height          : 20vh;
-  top             : -20vw;
   position        : fixed;
   background-image: var(--gradient-text);
-  overflow        : hidden;
   opacity         : .1;
   border-radius   : 50%;
-  filter          : blur(1px);
-  will-change     : transform;
-  animation       : planet 200s linear infinite;
+  transform       : translate(12rem, 120vh);
+  animation       : planet 100s linear;
 
   &.horizontal {
     position : fixed;
-    top      : 100vw;
-    width    : 10vw;
-    height   : 10vw;
+    top      : 50rem;
+    right    : 20rem;
+    transform: unset;
+    width    : 2vw;
+    height   : 2vw;
     opacity  : .1;
-    filter   : blur(1px);
-    animation: horizontal 400s linear infinite;
+    animation: unset;
   }
-}
-
-.solo {
-  animation: planet 200s linear infinite;
-
 }
 
 
@@ -43,7 +36,7 @@
   right           : 3rem;
   border-radius   : 50%;
   border          : none;
-  background-image: var(--gradient-text);
+  background-image: linear-gradient(to right, var(--cyan) 0%, var(--green) 100%);
   opacity         : .2;
 
   &:before {
@@ -53,20 +46,18 @@
     border-radius   : 50%;
     background-color: #221e3f;
     position        : absolute;
-    top             : 37%;
-    animation       : moon 100s linear;
-    left            : 100%;
+    transform       : translateX(25rem);
+    animation       : moon 80s 5s linear;
   }
 }
 
 @keyframes moon {
   0% {
-    transform: rotate(20deg) translate(-400px, 0);
+    transform: translate3d(-20rem, -10rem, 0);
   }
 
   100% {
-    transform: rotate(20deg) translate(0, 0);
-
+    transform: translate3d(25rem, 12.5rem, 0);
   }
 }
 
@@ -94,7 +85,7 @@
 
 
 $speed      : 2s;
-$tail-count : 4;
+$tail-count : 3;
 
 @function randNum($min, $max) {
   $randNum: $min + floor(random()* (($max - $min) + 1));
@@ -116,12 +107,12 @@ $tail-count : 4;
   align-items    : flex-end;
   border-radius  : 0 30% 30% 0;
   opacity        : .8;
-  will-change    : transform;
-  animation      : cometAnimateMobile 30s 5s linear infinite;
+  will-change    : transform, opacity;
+  animation      : cometAnimateMobile 30s 6s linear infinite;
 
 
   @media(min-width: 768px) {
-    animation: cometAnimateWeb 30s 5s linear infinite;
+    animation: cometAnimateWeb 30s 6s linear infinite;
   }
 
   .head {
@@ -156,25 +147,15 @@ $tail-count : 4;
       left         : 0;
       right        : 0;
       bottom       : 0;
-      top          : 0;
       margin       : auto;
       border       : .4rem solid var(--green-dark);
       border-radius: 50%;
       opacity      : 0;
-      animation    : cometParticles $speed/2 linear infinite;
+      animation    : cometParticles $speed/1.5 6s linear infinite;
+      top          : 30%;
+      height       : 1.2rem;
+      width        : 1.2rem;
 
-      &:nth-child(1) {
-        top   : 50%;
-        height: 1rem;
-        width : 1rem;
-      }
-
-      &:nth-child(2) {
-        bottom         : 50%;
-        width          : 1.4rem;
-        height         : 1.4rem;
-        animation-delay: -.5s;
-      }
     }
   }
 
@@ -187,14 +168,14 @@ $tail-count : 4;
     overflow       : hidden;
 
     span {
-      display         : inline-flex;
-      position        : relative;
-      width           : 100%;
-      height          : 100%;
-      border-radius   : 10rem;
-      background-color: var(--green);
-      animation       : tailAnimation $speed / 3 linear infinite;
-      opacity         : 0;
+      display      : inline-flex;
+      position     : relative;
+      width        : 100%;
+      height       : 100%;
+      border-radius: 10rem;
+      background   : var(--green);
+      animation    : tailAnimation $speed/3 6s linear infinite;
+      opacity      : 0;
     }
   }
 
@@ -213,8 +194,8 @@ $tail-count : 4;
 
 @keyframes tailAnimation {
   0% {
-    right  : -100%;
-    opacity: 0;
+    transform: translate3d(10rem, 0, 0);
+    opacity  : 0;
   }
 
   50% {
@@ -222,99 +203,65 @@ $tail-count : 4;
   }
 
   100% {
-    right           : 100%;
-    opacity         : 0;
+    transform       : translate3d(-10rem, 0, 0);
     background-color: var(--cyan);
+    opacity         : 0;
   }
 }
 
 
 @keyframes cometParticles {
   0% {
-    transform: translateX(-400%);
+    transform: translate3d(-10rem, 0, 0);
     opacity  : 1;
   }
 
   100% {
-    transform: translateX(400%);
-    opacity  : .7;
-
+    opacity  : 0;
+    transform: translate3d(10rem, 0, 0);
   }
 }
 
-
-
-
-
 @keyframes cometAnimateMobile {
   0% {
-    transform: rotate(45deg) translateX(0rem) translateY(0) scale(.4);
+    transform: rotate(45deg) translate3d(0, 0, 0);
   }
 
   15% {
-    transform: rotate(45deg) translateX(100vw) translateY(45px) scale(.7);
+    transform: rotate(45deg) translate3d(100vw, 4.5rem, 0);
   }
 
-  30% {
-    transform: rotate(45deg) translateX(220vw) translateY(45px) scale(.5);
-  }
-
+  30%,
   100% {
-    transform: rotate(45deg) translateX(220vw) translateY(45px) scale(.4);
+    transform: rotate(45deg) translate3d(220vw, 4.5rem, 0);
   }
 }
 
 @keyframes cometAnimateWeb {
   0% {
-    transform: rotate(20deg) translateX(-100%) translateY(0) scale(.7);
+    transform: rotate(20deg) translate3d(-100%, 0, 0);
   }
 
   15% {
-    transform: rotate(20deg) translateX(60vw) translateY(10px) scale(1.2);
+    transform: rotate(20deg) translate3d(60vw, 1rem, 0);
   }
 
-  30% {
-    transform: rotate(20deg) translateX(140vw) translateY(10px) scale(0.9);
-  }
-
+  30%,
   100% {
-    transform: rotate(20deg) translateX(140vw) translateY(10px) scale(.7);
+    transform: rotate(20deg) translate3d(140vw, 1rem, 0);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 @keyframes planet {
-  from {
-    transform: translateY(0) rotate(0) translateX(220px);
-  }
-
-  to {
-    transform: translateY(150vh) rotate(360deg) translateX(-400px);
-  }
-}
-
-@keyframes horizontal {
   0% {
-    transform: translateX(-10vw) rotate(0) translateY(70px);
+    transform: translate3d(12rem, 0, 0);
   }
 
   50% {
-    transform: translateX(110vw) rotate(360deg) translateY(35px);
+    transform: translate3d(10rem, 60vh, 0);
   }
 
   100% {
-    transform: translateX(110vw) rotate(360deg) translateY(35px);
-
+    transform: translate3d(15rem, 120vh, 0);
   }
 }
