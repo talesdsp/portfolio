@@ -224,16 +224,16 @@ $tail-count : 3;
 
 @keyframes cometAnimateMobile {
   0% {
-    transform: rotate(45deg) translate3d(0, 0, 0);
+    transform: rotate(45deg) translate3d(0, 0, 0) scale(.4);
   }
 
   15% {
-    transform: rotate(45deg) translate3d(100vw, 4.5rem, 0);
+    transform: rotate(45deg) translate3d(100vw, 4.5rem, 0) scale(.6);
   }
 
   30%,
   100% {
-    transform: rotate(45deg) translate3d(220vw, 4.5rem, 0);
+    transform: rotate(45deg) translate3d(220vw, 4.5rem, 0) scale(.4);
   }
 }
 
