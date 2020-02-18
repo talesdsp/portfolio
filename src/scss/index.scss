@@ -21,12 +21,14 @@
 }
 
 html {
-  font-size       : 10px;
-  height          : 100vh;
-  width           : 100vw;
-  overflow-x      : hidden;
-  color           : #eee;
-  background-color: var(--bg-color);
+  font-size              : 10px;
+  height                 : 100vh;
+  width                  : 100vw;
+  overflow-x             : hidden;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color                  : #eee;
+  background-color       : var(--bg-color);
 }
 
 body {
@@ -429,6 +431,7 @@ svg {
   animation       : rotate 40s linear infinite;
   transform-origin: center;
   transform-box   : fill-box;
+  will-change     : transform;
 }
 
 
@@ -532,23 +535,44 @@ svg {
   color: var(--green);
 }
 
+.uplink {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  position       : absolute;
+  width          : 5rem;
+  height         : 5rem;
+  bottom         : 3rem;
+  right          : 5rem;
+
+  @media(min-width: 768px) {
+    bottom: 6rem;
+    right : 15rem;
+  }
+
+  &::before {
+    content         : "";
+    position        : absolute;
+    border-radius   : 100%;
+    width           : inherit;
+    height          : inherit;
+    background-color: rgba(253, 87, 191, .99);
+    animation       : pulse 2s infinite;
+  }
+}
+
 .up {
-  position        : absolute;
+  z-index         : 100;
   display         : flex;
   justify-content : center;
   align-items     : center;
-  width           : 5rem;
-  height          : 5rem;
-  background-color: #eee;
-  bottom          : 5rem;
-  right           : 5rem;
   border-radius   : 100%;
-  z-index         : 100;
-  animation       : pulse 2s infinite;
   cursor          : pointer;
+  width           : inherit;
+  height          : inherit;
+  background-color: #eee;
 
   i {
-    margin   : auto;
     color    : #16162d;
     font-size: 2rem;
   }
@@ -560,15 +584,17 @@ svg {
 /* Animation */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(253, 87, 191, .99)
+    opacity: .99;
   }
 
   70% {
-    box-shadow: 0 0 0 2rem rgba(253, 87, 191, 0)
+    transform: scale(2);
+    opacity  : 0;
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(253, 87, 191, .99)
+    transform: scale(1);
+    opacity  : .99;
   }
 }
 
