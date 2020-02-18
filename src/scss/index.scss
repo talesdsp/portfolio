@@ -74,6 +74,16 @@ img {
   white-space: nowrap;
 }
 
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline-width: 3px;
+  outline-color: #ff79c6;
+  outline-style: solid;
+}
+
 /* End Global */
 
 
