@@ -18,7 +18,7 @@ var critical = require("critical");
 // Development Tasks
 // -----------------
 gulp.task("critical", function(cb) {
-  critical.generate({
+  return critical.generate({
     inline: true,
     base: "dist/",
     src: "index.html",
