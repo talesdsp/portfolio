@@ -162,7 +162,7 @@ gulp.task(
 
 gulp.task("build", async function(callback) {
   runSequence(
-    "clean:dist",
+    "clean",
     "copy",
     "sass",
     "js",
