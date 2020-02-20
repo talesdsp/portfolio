@@ -13,9 +13,21 @@ var babel = require("gulp-babel");
 var runSequence = require("gulp4-run-sequence");
 var webp = require("gulp-webp");
 var imageResize = require("gulp-image-resize");
+var critical = require("critical");
 
 // Development Tasks
 // -----------------
+gulp.task("critical", function(cb) {
+  critical.generate({
+    inline: true,
+    base: "dist/",
+    src: "index.html",
+    dest: "index.html",
+    minify: true,
+    width: 320,
+    height: 480
+  });
+});
 
 // Watchers
 gulp.task("watch", function() {
@@ -159,6 +171,7 @@ gulp.task("build", async function(callback) {
     "crop",
     "webp",
     "gifs",
+    "critical",
     callback
   );
 });
