@@ -63,10 +63,10 @@ img {
 /* Proven method to visually hide something but */
 /* still make it available to assistive technology */
 .visually-hidden {
-  position: absolute;
-  top     : auto;
-  overflow: hidden;
-  clip    : rect(1px 1px 1px 1px);
+  position   : absolute;
+  top        : auto;
+  overflow   : hidden;
+  clip       : rect(1px 1px 1px 1px);
   /* IE 6/7 */
   clip       : rect(1px, 1px, 1px, 1px);
   width      : 1px;
@@ -328,6 +328,8 @@ li {
   flex: 1;
 
   p {
+    padding-top: 2rem;
+    text-align : center;
     font-size  : 2rem;
     line-height: 3rem;
   }
